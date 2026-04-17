@@ -1,0 +1,34 @@
+.shell {
+  min-height: 100%;
+  display: flex;
+}
+
+.sidebarSlot {
+  display: none;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: var(--ig-bottom-nav);
+}
+
+@media (min-width: 768px) {
+  .sidebarSlot {
+    display: block;
+    width: var(--ig-sidebar-width);
+    flex-shrink: 0;
+  }
+
+  .main {
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mainInner {
+    width: 100%;
+    max-width: calc(100vw - var(--ig-sidebar-width));
+    min-height: 100vh;
+  }
+}

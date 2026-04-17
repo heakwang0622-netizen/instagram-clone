@@ -1,0 +1,38 @@
+.bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--ig-bottom-nav);
+  border-top: 1px solid var(--ig-border);
+  background: var(--ig-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 30;
+  padding: 0 8px;
+}
+
+.bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--ig-text);
+}
+
+.bar a.active {
+  color: var(--ig-text);
+}
+
+.thumb {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .bar {
+    display: none;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "instagram-clone",
+  "private": true,
+  "description": "FastAPI + React 인스타그램 클론 — 원클릭 개발 서버",
+  "scripts": {
+    "install:backend": "cd backend && python -m pip install -q -r requirements.txt",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm install && npm run install:backend && npm run install:frontend",
+    "free:port": "node scripts/free-port.js 8000",
+    "dev:backend": "npm run free:port && cd backend && python run_dev_prep.py && python -W ignore::DeprecationWarning dev_server.py --host 127.0.0.1 --port 8000",
+    "dev:backend:reload": "npm run free:port && cd backend && python run_dev_prep.py && python -W ignore::DeprecationWarning dev_server.py --reload --host 127.0.0.1 --port 8000",
+    "dev:frontend": "cd frontend && npx vite --host localhost --open",
+    "dev": "npm run install:all && concurrently -n 백엔드,프론트 -c cyan,magenta \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

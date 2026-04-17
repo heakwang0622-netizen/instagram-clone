@@ -1,0 +1,58 @@
+.page {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--ig-surface);
+  border-left: 1px solid var(--ig-border);
+  border-right: 1px solid var(--ig-border);
+}
+
+.head {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--ig-border);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+.row:hover {
+  background: var(--ig-bg);
+}
+
+.row.unread {
+  background: rgba(0, 149, 246, 0.06);
+}
+
+.body {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  min-width: 0;
+}
+
+.body strong {
+  font-weight: 600;
+}
+
+.time {
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+  margin-top: 4px;
+}
+
+.thumb {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}

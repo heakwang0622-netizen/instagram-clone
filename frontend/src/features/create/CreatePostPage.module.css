@@ -1,0 +1,176 @@
+.page {
+  max-width: 935px;
+  margin: 0 auto;
+  /* 모바일 하단 고정 탭바( z-index 30 ) 위로 본문·버튼이 올라가도록 */
+  padding: 0 12px calc(24px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 767px) {
+  .page {
+    padding-bottom: calc(24px + var(--ig-bottom-nav) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.card {
+  margin-top: 24px;
+  border: 1px solid var(--ig-border);
+  border-radius: 8px;
+  background: var(--ig-surface);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-direction: row;
+    min-height: 500px;
+  }
+}
+
+/* 파일 input은 스크린리더용으로만 숨김 — pointer-events:none·0크기는 label/click()이 깨지는 경우가 있음 */
+.hiddenFileInput {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.chooseLabel {
+  cursor: pointer;
+  color: var(--ig-link);
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 0;
+}
+
+.pickBtn {
+  cursor: pointer;
+  color: var(--ig-link);
+  font-size: 14px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  font: inherit;
+  padding: 8px 4px;
+}
+
+.dropZone {
+  cursor: default;
+}
+
+.drop {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  border-bottom: 1px solid var(--ig-border);
+  gap: 16px;
+  min-height: 280px;
+}
+
+.preview {
+  max-width: 100%;
+  max-height: min(360px, 55vh);
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.previewVideo {
+  max-width: 100%;
+  max-height: min(360px, 55vh);
+  border-radius: 4px;
+}
+
+.previewFallback {
+  max-width: 100%;
+  padding: 24px 16px;
+  border: 1px dashed var(--ig-border);
+  border-radius: 8px;
+  text-align: center;
+  background: var(--ig-bg);
+}
+
+.chooseAnother {
+  margin-top: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+@media (min-width: 768px) {
+  .drop {
+    border-bottom: none;
+    border-right: 1px solid var(--ig-border);
+  }
+}
+
+.iconBig {
+  width: 96px;
+  height: 96px;
+  opacity: 0.35;
+}
+
+.meta {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  z-index: 31;
+}
+
+.meta textarea {
+  width: 100%;
+  min-height: 120px;
+  border: none;
+  resize: vertical;
+  font-size: 14px;
+  outline: none;
+}
+
+.meta input {
+  width: 100%;
+  padding: 8px 0;
+  border: none;
+  border-bottom: 1px solid var(--ig-border);
+  font-size: 14px;
+  outline: none;
+}
+
+.shareBtn {
+  margin-top: auto;
+  align-self: flex-end;
+  background: var(--ig-link);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.shareBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.shareBtn:not(:disabled) {
+  pointer-events: auto;
+}

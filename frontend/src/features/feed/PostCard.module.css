@@ -1,0 +1,139 @@
+.card {
+  background: var(--ig-surface);
+  border: 1px solid var(--ig-border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+}
+
+.headLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.headLeft span {
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.time {
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+  font-weight: 400;
+}
+
+.mediaWrap {
+  position: relative;
+  background: #000;
+  aspect-ratio: 1;
+  max-height: min(90vh, 800px);
+}
+
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.dot.active {
+  background: #fff;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  opacity: 0.85;
+  padding: 8px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.navBtn.prev {
+  left: 4px;
+}
+
+.navBtn.next {
+  right: 4px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 12px 4px;
+}
+
+.actions button,
+.actions a {
+  display: flex;
+  color: var(--ig-text);
+}
+
+.likes {
+  padding: 0 14px 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.caption {
+  padding: 0 14px 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.caption a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: 6px;
+}
+
+.viewComments {
+  padding: 0 14px 10px;
+  font-size: 14px;
+  color: var(--ig-text-secondary);
+  text-decoration: none;
+  display: block;
+}
+
+.timeRow {
+  padding: 0 14px 14px;
+  font-size: 10px;
+  color: var(--ig-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

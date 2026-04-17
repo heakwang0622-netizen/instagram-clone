@@ -1,0 +1,166 @@
+.page {
+  max-width: 935px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0 28px;
+  border-bottom: 1px solid var(--ig-border);
+}
+
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    gap: 48px;
+    align-items: center;
+    padding: 32px 0 44px;
+  }
+}
+
+.avatarCol {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .avatarCol {
+    flex: 0 0 150px;
+  }
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-bottom: 20px;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--ig-bg);
+  border: 1px solid var(--ig-border);
+}
+
+.btn.primary {
+  background: var(--ig-link);
+  color: #fff;
+  border-color: transparent;
+}
+
+.btn.ghost {
+  background: transparent;
+}
+
+.stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.stats a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.stats strong {
+  font-weight: 600;
+}
+
+.bio {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bio strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.bio span {
+  display: block;
+  white-space: pre-wrap;
+}
+
+.website {
+  display: block;
+  margin-top: 8px;
+  color: var(--ig-link);
+  text-decoration: none;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.website:hover {
+  text-decoration: underline;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  border-top: 1px solid var(--ig-border);
+  margin-top: 4px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 0;
+  margin-top: -1px;
+  border-top: 1px solid transparent;
+  color: var(--ig-text-secondary);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.tab.active {
+  border-top-color: var(--ig-text);
+  color: var(--ig-text);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.grid a {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #eee;
+}
+
+.grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

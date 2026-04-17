@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --ig-bg: #fafafa;
+  --ig-surface: #ffffff;
+  --ig-border: #dbdbdb;
+  --ig-text: #262626;
+  --ig-text-secondary: #8e8e8e;
+  --ig-link: #0095f6;
+  --ig-link-hover: #1877f2;
+  --ig-like: #ed4956;
+  --ig-sidebar-width: 244px;
+  --ig-feed-max: 470px;
+  --ig-bottom-nav: 49px;
+  --ig-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ig-logo: 'Grand Hotel', cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ig-font);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--ig-text);
+  background: var(--ig-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+a {
+  color: var(--ig-link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--ig-link-hover);
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* util */
+.ig-muted {
+  color: var(--ig-text-secondary);
+  font-size: 12px;
+}
+
+.ig-strong {
+  font-weight: 600;
+}

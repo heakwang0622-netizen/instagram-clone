@@ -1,0 +1,142 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--ig-border);
+  background: var(--ig-surface);
+  position: sticky;
+  top: 0;
+  z-index: 15;
+}
+
+.logo a {
+  display: flex;
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  row-gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .header {
+    justify-content: flex-end;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .nav {
+    flex: 0 1 auto;
+  }
+}
+
+.iconLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ig-text);
+  text-decoration: none;
+  padding: 2px;
+}
+
+.profileWrap {
+  position: relative;
+}
+
+.profileTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--ig-text);
+  border-radius: 50%;
+}
+
+.profileThumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.profileMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  padding: 8px 0;
+  background: var(--ig-surface);
+  border: 1px solid var(--ig-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  z-index: 30;
+}
+
+.profileMenu a,
+.profileMenu button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--ig-text);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.menuItemIcon {
+  display: flex;
+  flex-shrink: 0;
+  width: 22px;
+  justify-content: center;
+  color: var(--ig-text-secondary);
+}
+
+.logoutBtn {
+  color: #ed4956;
+}
+
+.logoutBtn .menuItemIcon {
+  color: #ed4956;
+}
+
+.profileMenu a:hover,
+.profileMenu button:hover {
+  background: var(--ig-bg);
+}
+
+.menuDivider {
+  height: 1px;
+  margin: 8px 0;
+  background: var(--ig-border);
+}
+
+.hiddenFile {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+}

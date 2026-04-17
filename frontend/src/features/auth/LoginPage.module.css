@@ -1,0 +1,119 @@
+.page {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.phones {
+  display: none;
+  position: relative;
+  width: 380px;
+  height: 580px;
+  /* CDN 차단·핫링크 시에도 옆 패널이 완전히 비어 보이지 않도록 */
+  background-color: #fafafa;
+  background-image: url('https://www.instagram.com/static/images/homepage/home-phones.png/388fc87aa889.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 900px) {
+  .phones {
+    display: block;
+  }
+}
+
+.panel {
+  width: 100%;
+  max-width: 350px;
+}
+
+.card {
+  background: var(--ig-surface);
+  border: 1px solid var(--ig-border);
+  border-radius: 1px;
+  padding: 36px 40px 24px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.notice {
+  background: #ffe6e6;
+  color: #c32;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.field {
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 8px;
+  background: var(--ig-bg);
+  border: 1px solid var(--ig-border);
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #a8a8a8;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  background: var(--ig-link);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.forgot {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--ig-link);
+}
+
+.signup {
+  background: var(--ig-surface);
+  border: 1px solid var(--ig-border);
+  border-radius: 1px;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signup a {
+  font-weight: 600;
+}
+
+.meta {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+}

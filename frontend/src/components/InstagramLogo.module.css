@@ -1,0 +1,9 @@
+.wordmark {
+  font-family: var(--ig-logo);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--ig-text);
+  letter-spacing: 0;
+  line-height: 1;
+  user-select: none;
+}

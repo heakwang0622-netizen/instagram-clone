@@ -1,0 +1,161 @@
+.page {
+  width: 100%;
+}
+
+.inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 0 24px;
+}
+
+.grid {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 0 12px;
+  justify-content: center;
+}
+
+.feedCol {
+  flex: 0 1 560px;
+  max-width: 560px;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-top: 24px;
+  }
+}
+
+.sideCol {
+  display: none;
+  width: 250px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 24px;
+}
+
+@media (min-width: 1180px) {
+  .sideCol {
+    display: block;
+  }
+}
+
+.suggestCard {
+  margin-top: 24px;
+}
+
+.suggestTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: var(--ig-text-secondary);
+}
+
+.suggestTitle a {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ig-text);
+}
+
+.suggestRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.suggestLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.suggestMeta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.suggestMeta strong {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestMeta span {
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.followBtn {
+  color: var(--ig-link);
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.followingBadge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ig-text-secondary);
+  flex-shrink: 0;
+}
+
+.profileRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.profileRow a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+
+.profileMeta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.profileMeta strong {
+  font-size: 14px;
+}
+
+.profileMeta span {
+  font-size: 14px;
+  color: var(--ig-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.siteFooter {
+  margin-top: 48px;
+  padding: 24px 12px 32px;
+  text-align: center;
+  border-top: 1px solid var(--ig-border);
+}
+
+.siteFooter p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
