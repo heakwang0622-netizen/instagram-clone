@@ -1,116 +1,164 @@
-# 프론트엔드 개발 명세서 (Instagram 클론)
+# 프론트엔드 현황 문서 (Instagram 클론)
 
-## 1. 개요
+> 최종 업데이트: 2026-04-21
 
-- **목표**: 모바일 우선 반응형 Instagram 클론 웹 UI
-- **스택**: React 18+, TypeScript(권장), React Router, 상태 관리(권장: Zustand 또는 React Query + Context)
-- **스타일**: CSS Modules, Tailwind CSS, 또는 styled-components 중 팀 표준 1종 통일
-- **HTTP 클라이언트**: `fetch` 또는 Axios, API 베이스 URL은 환경 변수(`VITE_*` / `REACT_APP_*`)로 분리
+## 1. 기술 스택 (실제 구현)
 
-## 2. 화면(페이지) 목록
+| 항목 | 버전 |
+|------|------|
+| React | 19.2.4 |
+| TypeScript | ~5.9.3 |
+| Vite | 8.0.1 |
+| React Router | 7.14.0 |
+| TanStack Query | 5.96.2 |
+| 스타일 | CSS Modules (전용) |
 
-| 경로(예시) | 설명 | 인증 |
-|------------|------|------|
-| `/login`, `/register` | 로그인·회원가입 | 공개 |
-| `/` | 홈 피드(팔로우 게시물 + 추천) | 필수 |
-| `/explore` | 탐색(그리드, 검색 진입점) | 필수 |
-| `/p/:postId` | 단일 게시물(댓글·좋아요) | 필수(비공개 계정은 백엔드 정책 따름) |
-| `/create` | 새 게시물(이미지 업로드, 캡션, 위치 선택적) | 필수 |
-| `/reels` | 릴스 목록·재생(선택 구현 시) | 필수 |
-| `/:username` | 프로필(그리드, 하이라이트 UI는 단순화 가능) | 필수 |
-| `/:username/followers`, `/:username/following` | 팔로워·팔로잉 목록 | 필수 |
-| `/direct` | DM 목록·채팅방 | 필수 |
-| `/notifications` | 알림 목록 | 필수 |
-| `/accounts/edit` | 프로필 편집(이름, 바이오, 사진) | 필수 |
-| `/settings` | 설정(비밀번호 변경, 로그아웃) | 필수 |
-| `*` | 404 | - |
+의존성 관리: `frontend/package.json`
 
-## 3. 공통 UI·레이아웃
+## 2. 구현된 라우트 목록
 
-- **앱 셸**: 데스크톱은 좌측 고정 내비(아이콘 + 라벨), 상단 검색(선택), 우측 프로필 미니 영역
-- **모바일**: 하단 탭 바(홈, 탐색, 작성, DM, 프로필)
-- **헤더**: 로고, 검색 입력(사용자 검색 API 연동), 알림/ DM 아이콘
-- **로딩**: 스켈레톤(피드 카드, 프로필 그리드)
-- **에러**: 토스트 또는 인라인 메시지, 401 시 로그인으로 리다이렉트
-- **이미지**: lazy loading, 업로드 전 미리보기·압축(클라이언트 측 리사이즈 권장)
+| 경로 | 컴포넌트 | 인증 |
+|------|----------|------|
+| `/login` | `LoginPage` | 비로그인 전용(GuestRoute) |
+| `/register` | `RegisterPage` | 비로그인 전용(GuestRoute) |
+| `/` | `FeedPage` (관리자면 `/admin` 리다이렉트) | 공개 |
+| `/explore` | `ExplorePage` | 공개 |
+| `/search` | `SearchPage` | 공개 |
+| `/p/:postId` | `PostDetailPage` | 공개 |
+| `/p/:postId/edit` | `EditPostPage` | 필수(PrivateRoute) |
+| `/create` | `CreatePostPage` | 필수 |
+| `/reels` | `ReelsPage` | 공개 |
+| `/direct` | `DirectPage` | 필수 |
+| `/direct/:conversationId` | `DirectPage` | 필수 |
+| `/notifications` | `NotificationsPage` | 필수 |
+| `/saved` | `SavedPage` | 필수 |
+| `/bookmarks` | `BookmarksPage` | 필수 |
+| `/accounts/edit` | `AccountEditPage` | 필수 |
+| `/settings` | `SettingsPage` | 필수 |
+| `/settings/password` | `PasswordSettingsPage` | 필수 |
+| `/settings/help` | `HelpSettingsPage` | 필수 |
+| `/settings/about` | `AboutSettingsPage` | 필수 |
+| `/:username` | `ProfilePage` | 공개 |
+| `/:username/followers` | `FollowListPage` | 공개 |
+| `/:username/following` | `FollowListPage` | 공개 |
+| `/admin` | `AdminDashboard` | 필수(관리자) |
+| `/admin/users` | `AdminUsers` | 필수(관리자) |
+| `/admin/posts` | `AdminPosts` | 필수(관리자) |
+| `*` | `NotFoundPage` | - |
 
-## 4. 핵심 기능별 요구사항
-
-### 4.1 인증
-
-- JWT(Access) 저장: `httpOnly` 쿠키(권장) 또는 메모리 + Refresh 흐름(백엔드와 합의)
-- 토큰 만료 시 갱신 또는 재로그인 유도
-- 보호 라우트: `PrivateRoute` HOC 또는 라우터 `loader`에서 검증
-
-### 4.2 피드
-
-- 무한 스크롤 또는 페이지네이션(cursor)
-- 게시물 카드: 작성자, 이미지(캐러셀 다중 이미지 지원), 좋아요·댓글 수, 캡션, 시간
-- 좋아요 토글(낙관적 업데이트 + 실패 시 롤백)
-- 댓글 모달 또는 인라인 확장
-
-### 4.3 게시물 작성
-
-- `multipart/form-data` 업로드, 진행률 표시
-- 캡션, 태그된 사용자(선택), 위치 문자열(선택)
-
-### 4.4 프로필
-
-- 아바타, 사용자명, 전체 이름, 바이오, 게시물 수·팔로워·팔로잉
-- 본인 프로필: 편집·설정 링크
-- 타인 프로필: 팔로우/언팔로우, 메시지 버튼
-- 탭: 게시물 그리드, (선택) 저장됨
-
-### 4.5 검색·탐색
-
-- 사용자 검색 디바운스
-- 탐색 그리드: 추천 또는 인기 게시물
-
-### 4.6 DM
-
-- 대화 목록, 읽지 않음 표시
-- 채팅: 메시지 목록, 텍스트 전송, (선택) 이미지
-- 실시간: 폴링(간단) 또는 WebSocket(백엔드와 합의)
-
-### 4.7 알림
-
-- 타입별 아이콘(좋아요, 댓글, 팔로우, 멘션)
-- 읽음 처리
-
-## 5. 상태·데이터
-
-- **서버 상태**: React Query(TanStack Query)로 캐시, 무효화 키 설계(`['feed']`, `['post', id]`, `['profile', username]`)
-- **클라이언트 상태**: UI 모달, 현재 사용자 프로필 캐시
-- **폼**: React Hook Form 권장(회원가입·프로필 편집)
-
-## 6. API 연동 규칙
-
-- 모든 요청에 `Authorization: Bearer <token>` 또는 쿠키 자동 전송(fetch `credentials: 'include'`)
-- 응답 타입 TypeScript 인터페이스와 백엔드 OpenAPI 스키마 동기화
-- 에러 코드 매핑: `401` 로그아웃, `403` 안내, `422` 필드 에러 표시
-
-## 7. 접근성·품질
-
-- 키보드 포커스, 버튼 `aria-label`, 이미지 `alt`(캡션 또는 "사용자 게시물")
-- Lighthouse 성능·접근성 기준 내부 목표 설정(예: 접근성 90+)
-
-## 8. 폴더 구조(권장)
+## 3. 레이아웃 구조
 
 ```
-src/
-  app/           # 라우트, providers
-  components/    # 공통 UI
-  features/      # feed, post, profile, auth, dm ...
-  hooks/
-  lib/           # api client, utils
-  types/
+src/components/layout/
+  AppShell.tsx        # 전체 앱 래퍼 (데스크톱 사이드바 + 모바일 하단 탭)
+  Sidebar.tsx         # 데스크톱 좌측 고정 내비게이션
+  BottomNav.tsx       # 모바일 하단 탭 바
+  AppTopNav.tsx       # 앱 상단 내비
+  MobileHeader.tsx    # 모바일 헤더
 ```
 
-## 9. 산출물
+- 데스크톱: 좌측 고정 Sidebar (아이콘 + 라벨)
+- 모바일: 하단 BottomNav (홈, 탐색, 작성, DM, 프로필)
+- 공통: Avatar, Skeleton, PostOptionsMenu, InstagramLogo 컴포넌트
 
-- 위 화면 구현 및 백엔드 API와 E2E 시나리오 정합
-- `.env.example`에 `VITE_API_BASE_URL` 등 문서화
+## 4. 인증 (`src/features/auth/`)
+
+- `AuthContext.tsx`: JWT Access Token을 메모리(Context)에 보관
+- `PrivateRoute.tsx`: 미로그인 시 `/login`으로 리다이렉트
+- `GuestRoute.tsx`: 로그인 시 `/`으로 리다이렉트
+- 실제 API 연동:
+  - `POST /api/v1/auth/login` — 이메일 + 비밀번호
+  - `POST /api/v1/auth/register` — 이메일 + 유저네임 + 비밀번호 + 이름(선택)
+  - `GET /api/v1/users/me` — 로그인 직후 프로필 조회
+
+## 5. API 클라이언트 구조 (`src/lib/`)
+
+| 파일 | 역할 |
+|------|------|
+| `api.ts` | `apiUrl()`, `fetchHealth()` — 베이스 URL 결정 (Vite 프록시 활용) |
+| `auth-api.ts` | 로그인·회원가입·`/users/me` 호출, `mapApiUserToUser()` |
+| `instagram-api.ts` | 피드·게시물·프로필·팔로우·좋아요·저장·댓글·검색·DM·알림 전 API |
+| `posts-api.ts` | `instagram-api`의 re-export (하위 호환) |
+| `mock-data.ts` | 오프라인 목업 데이터 |
+
+**API 베이스 URL 결정 규칙**:
+- `VITE_API_BASE_URL` 환경 변수가 있으면 해당 URL 사용
+- 개발(`DEV`)이면 빈 문자열 → Vite 프록시(`/api`, `/media` → `http://127.0.0.1:8000`)
+- 그 외: `http://127.0.0.1:8000`
+
+## 6. 주요 기능 구현 현황
+
+### 피드 (`FeedPage`, `PostCard`, `StoriesRow`)
+- 팔로우 사용자 게시물 목록 (`GET /api/v1/posts/feed`)
+- PostCard: 작성자, 캐러셀 이미지/동영상, 좋아요/댓글 수, 캡션
+- StoriesRow: 상단 스토리 링크 행 (프로필 아바타 형태)
+
+### 게시물 작성 (`CreatePostPage`)
+- `multipart/form-data` 업로드 (`POST /api/v1/posts`)
+- 이미지·동영상 미리보기, 캡션·위치 입력
+
+### 탐색 (`ExplorePage`)
+- 그리드 형태 게시물 목록 (`GET /api/v1/posts/explore`)
+
+### 릴스 (`ReelsPage`)
+- 동영상 게시물 표시 (별도 전용 API 없음, `post_media.media_type=video` 활용)
+
+### 프로필 (`ProfilePage`, `FollowListPage`)
+- 아바타, 통계(게시물·팔로워·팔로잉), 게시물 그리드
+- 팔로우/언팔로우 버튼
+- 팔로워/팔로잉 목록 페이지
+
+### 검색 (`SearchPage`)
+- 유저네임·이름 검색 (`GET /api/v1/search/users?q=`)
+
+### DM (`DirectPage`)
+- 대화 목록, 메시지 스레드, 메시지 전송
+- `GET /api/v1/conversations`, `POST /api/v1/conversations/{id}/messages`
+
+### 알림 (`NotificationsPage`)
+- 좋아요·댓글·팔로우 알림 목록, 읽음 처리
+
+### 저장됨 (`SavedPage`)
+- `GET /api/v1/users/me/saved`
+
+### 계정 편집 (`AccountEditPage`)
+- `PATCH /api/v1/users/me` — 이름·바이오·아바타·웹사이트
+
+### 관리자 패널 (`AdminDashboard`, `AdminUsers`, `AdminPosts`)
+- 통계, 회원 목록/삭제, 게시물 목록/삭제
+- `is_admin=true` 계정만 접근 가능
+
+## 7. 타입 정의 (`src/types/index.ts`)
+
+핵심 타입: `User`, `Post`, `PostMedia`, `Comment`, `Conversation`, `Message`, `AppNotification`
+
+`User.id`는 문자열(프론트)이며 백엔드 정수 PK를 `String(id)`로 변환.
+
+## 8. 폴더 구조
+
+```
+frontend/src/
+  app/             # App.tsx (라우트 정의)
+  components/      # 공통 UI (Avatar, Skeleton, Layout 등)
+  features/        # auth, feed, create, explore, post, profile,
+                   # search, direct, notifications, reels,
+                   # misc, settings
+  pages/admin/     # AdminDashboard, AdminLayout, AdminUsers, AdminPosts
+  hooks/           # useRequireLogin
+  lib/             # api.ts, auth-api.ts, instagram-api.ts, posts-api.ts, mock-data.ts
+  services/        # api.ts (adminApi 헬퍼)
+  types/           # index.ts
+  styles/          # global.css
+```
+
+## 9. 환경 변수
+
+파일: `frontend/.env`
+
+| 변수 | 설명 | 기본값 |
+|------|------|--------|
+| `VITE_API_BASE_URL` | 백엔드 URL (생략 시 Vite 프록시) | 없음 |
 
 ---
 
-*본 문서는 `backend.md`, `db.md`, `guide.md`와 함께 읽는다.*
+*API 계약은 `backend.md`, DB 스키마는 `db.md`, 실행 방법은 `guide.md` 참조.*
