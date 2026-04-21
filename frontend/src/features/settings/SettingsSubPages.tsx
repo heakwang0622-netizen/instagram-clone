@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { AppTopNav } from '../../components/layout/AppTopNav';
 import { ChevronLeftIcon } from '../../components/icons/NavIcons';
+import { devProxyBackendPortLabel } from '../../lib/api';
 import { patchPassword } from '../../lib/instagram-api';
 import { useAuth } from '../auth/AuthContext';
 import styles from './SettingsSubPages.module.css';
@@ -101,7 +102,10 @@ export function HelpSettingsPage() {
         </ul>
         <h2 className={styles.sectionTitle}>문제 해결</h2>
         <ul className={styles.bulletList}>
-          <li>로그인이 안 되면 이메일/비밀번호를 다시 확인하고, 백엔드(포트 8000) 실행 상태를 확인해 주세요.</li>
+          <li>
+            로그인이 안 되면 이메일/비밀번호를 다시 확인하고, 백엔드(포트 {devProxyBackendPortLabel()}) 실행 상태를
+            확인해 주세요.
+          </li>
           <li>이미지 업로드 실패 시 파일 형식(JPEG/PNG/WebP/GIF)과 용량을 확인해 주세요.</li>
           <li>화면이 비정상적으로 보이면 브라우저 새로고침 후 다시 시도해 주세요.</li>
           <li>변경사항이 반영되지 않으면 로그아웃 후 재로그인하여 세션을 갱신해 주세요.</li>

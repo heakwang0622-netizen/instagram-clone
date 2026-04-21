@@ -1,4 +1,4 @@
-import { apiUrl } from './api';
+import { apiUrl, devProxyBackendPortLabel } from './api';
 import type { User } from '../types';
 
 const LOGIN_TIMEOUT_MS = 20_000;
@@ -78,6 +78,7 @@ function isLoginResponse(data: unknown): data is LoginResponse {
 }
 
 export async function loginWithApi(email: string, password: string): Promise<LoginResponse> {
+  const apiPort = devProxyBackendPortLabel();
   const controller = new AbortController();
   const timeoutId = window.setTimeout(() => controller.abort(), LOGIN_TIMEOUT_MS);
 
@@ -92,11 +93,16 @@ export async function loginWithApi(email: string, password: string): Promise<Log
   } catch (e) {
     if (e instanceof DOMException && e.name === 'AbortError') {
       throw new Error(
-        '서버 응답이 없습니다. 터미널에서 백엔드(포트 8000)가 실행 중인지 확인한 뒤 다시 시도해 주세요.',
+        `서버 응답이 없습니다. 터미널에서 백엔드(포트 ${apiPort})가 실행 중인지 확인한 뒤 다시 시도해 주세요.`,
       );
     }
+    const devHint =
+      import.meta.env.DEV &&
+      (e instanceof TypeError || (e instanceof DOMException && e.name === 'NetworkError'))
+        ? ` Vite 터미널에 \`ECONNREFUSED 127.0.0.1:${apiPort}\` 또는 백엔드에 \`10048\`이 보이면, 포트 ${apiPort}를 쓰는 다른 프로그램을 끈 뒤 \`npm run dev\`를 다시 실행하세요.`
+        : '';
     throw new Error(
-      '네트워크 오류입니다. 백엔드가 켜져 있는지, 방화벽을 확인해 주세요.',
+      `브라우저가 API(프록시 → 127.0.0.1:${apiPort})에 연결하지 못했습니다.${devHint} 터미널에 "Uvicorn running on http://127.0.0.1:${apiPort}" 문구가 나온 뒤 다시 로그인해 주세요.`,
     );
   } finally {
     window.clearTimeout(timeoutId);
@@ -110,6 +116,11 @@ export async function loginWithApi(email: string, password: string): Promise<Log
   }
 
   if (!res.ok) {
+    if (res.status === 502 || res.status === 503 || res.status === 504) {
+      throw new Error(
+        `API 서버(포트 ${apiPort})에 연결할 수 없습니다. 터미널에 Uvicorn이 떠 있는지 확인한 뒤 다시 시도해 주세요.`,
+      );
+    }
     const detail = (data as { detail?: unknown }).detail;
     throw new Error(parseLoginError(detail));
   }
@@ -127,6 +138,7 @@ export async function registerWithApi(
   password: string,
   fullName: string,
 ): Promise<LoginResponse> {
+  const apiPort = devProxyBackendPortLabel();
   const res = await fetch(apiUrl('/api/v1/auth/register'), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -144,6 +156,11 @@ export async function registerWithApi(
     data = {};
   }
   if (!res.ok) {
+    if (res.status === 502 || res.status === 503 || res.status === 504) {
+      throw new Error(
+        `API 서버(포트 ${apiPort})에 연결할 수 없습니다. 터미널에 Uvicorn이 떠 있는지 확인한 뒤 다시 시도해 주세요.`,
+      );
+    }
     const detail = (data as { detail?: unknown }).detail;
     throw new Error(parseLoginError(detail));
   }

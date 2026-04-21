@@ -1,5 +1,4 @@
 import argparse
-import asyncio
 import socket
 import sys
 import time
@@ -9,15 +8,18 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 
 def _install_socketpair_retry() -> None:
+    if not sys.platform.startswith("win"):
+        return
+
     original = socket.socketpair
 
     def stable_socketpair(*args, **kwargs):  # type: ignore[no-untyped-def]
         last_err: OSError | None = None
-        for _ in range(80):
+        for _ in range(120):
             try:
                 return original(*args, **kwargs)
             except OSError as e:
-                if sys.platform.startswith("win") and getattr(e, "winerror", None) == 10014:
+                if getattr(e, "winerror", None) == 10014:
                     last_err = e
                     time.sleep(0.02)
                     continue
@@ -36,12 +38,11 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=8000)
     args = parser.parse_args()
 
-    # Python 3.14 + Windows 환경에서 socketpair 간헐 오류(WinError 10014) 회피
+    # Windows 환경에서 간헐 WinError 10014(socketpair) 완화
     _install_socketpair_retry()
 
-    # Python 3.14 + Windows 환경에서 ProactorEventLoop 이슈 완화
-    if sys.platform.startswith("win") and hasattr(asyncio, "WindowsSelectorEventLoopPolicy"):
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    # Uvicorn(loop="asyncio")은 Windows에서 ProactorEventLoop를 직접 씁니다.
+    # WindowsSelectorEventLoopPolicy를 켜면 Selector 초기화(socketpair)가 10014에 더 자주 걸릴 수 있어 두지 않습니다.
 
     import uvicorn
 

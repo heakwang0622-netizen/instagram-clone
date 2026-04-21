@@ -7,6 +7,9 @@ backend/*.db-shm
 backend/*.db-wal
 backend/.env
 backend/nohup.out
+.pytest_cache/
+*.py[cod]
+*$py.class
 
 # Node
 node_modules/
@@ -15,6 +18,11 @@ frontend/dist/
 frontend/.env
 frontend/frontend@*
 frontend/tsc
+
+# Vite / 로컬 전용 (포트·비밀)
+frontend/.env.development
+frontend/.env.local
+frontend/.env.*.local
 
 # Uploads / OS
 uploads/

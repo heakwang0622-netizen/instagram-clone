@@ -1,9 +1,9 @@
-"""Alembic 환경 — `app.config.settings.database_url` 사용."""
+"""Alembic 환경 — `app.config.settings.database_url` (환경별 SQLite / PostgreSQL)."""
 
 from logging.config import fileConfig
 
 from alembic import context
-from sqlalchemy import engine_from_config, pool
+from sqlalchemy import create_engine, pool
 
 from app.config import settings
 from app.database import Base
@@ -33,12 +33,9 @@ def run_migrations_offline() -> None:
 
 
 def run_migrations_online() -> None:
-    section = config.get_section(config.config_ini_section, {})
-    connectable = engine_from_config(
-        section,
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
-    )
+    url = settings.database_url
+    connect_args = {"check_same_thread": False} if url.startswith("sqlite") else {}
+    connectable = create_engine(url, poolclass=pool.NullPool, connect_args=connect_args)
 
     with connectable.connect() as connection:
         context.configure(connection=connection, target_metadata=target_metadata)

@@ -12,6 +12,7 @@ import {
   SettingsGearIcon,
   UserNavIcon,
 } from '../icons/NavIcons';
+import { devProxyBackendPortLabel } from '../../lib/api';
 import { uploadAvatar } from '../../lib/instagram-api';
 import { useAuth } from '../../features/auth/AuthContext';
 import styles from './AppTopNav.module.css';
@@ -62,7 +63,7 @@ export function AppTopNav() {
       const base = raw.trim() || '프로필 사진을 변경하지 못했습니다.';
       const hint =
         /\(404\)|Not Found|찾을 수 없습니다/i.test(base)
-          ? '\n\n백엔드(API, 포트 8000)를 한 번 종료한 뒤 다시 실행해 주세요. (코드에 프로필 사진 업로드가 반영된 프로세스여야 합니다.)'
+          ? `\n\n백엔드(API, 포트 ${devProxyBackendPortLabel()})를 한 번 종료한 뒤 다시 실행해 주세요. (코드에 프로필 사진 업로드가 반영된 프로세스여야 합니다.)`
           : '';
       alert(base + hint);
     }

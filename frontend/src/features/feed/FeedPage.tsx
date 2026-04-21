@@ -6,6 +6,7 @@ import { Avatar } from '../../components/Avatar';
 
 import { AppTopNav } from '../../components/layout/AppTopNav';
 
+import { devProxyBackendPortLabel } from '../../lib/api';
 import { fetchExplorePage, fetchFeedPage, fetchSuggestedUsers, followUser } from '../../lib/instagram-api';
 
 import { useRequireLogin } from '../../hooks/useRequireLogin';
@@ -107,7 +108,7 @@ export function FeedPage() {
             msg.includes('네트워크');
           setError(
             isNetwork
-              ? 'API 서버(포트 8000)에 연결할 수 없습니다. 터미널에서 npm run free:port 후 npm run dev를 다시 실행해 주세요. (백엔드 로그에 WinError 10048이면 포트가 다른 프로세스에 잡힌 상태입니다.)'
+              ? `API 서버(포트 ${devProxyBackendPortLabel()})에 연결할 수 없습니다. 터미널에서 npm run free:port 후 npm run dev를 다시 실행해 주세요. (백엔드 로그에 WinError 10048이면 포트가 다른 프로세스에 잡힌 상태입니다.)`
               : msg || '피드를 불러올 수 없습니다.',
           );
           setFeedPosts([]);

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Avatar } from '../../components/Avatar';
 import { AppTopNav } from '../../components/layout/AppTopNav';
 import { ChevronLeftIcon } from '../../components/icons/NavIcons';
+import { devProxyBackendPortLabel } from '../../lib/api';
 import { uploadAvatar } from '../../lib/instagram-api';
 import { useAuth } from '../auth/AuthContext';
 import styles from './AccountEditPage.module.css';
@@ -45,7 +46,7 @@ export function AccountEditPage() {
       const base = raw.trim() || '프로필 사진을 변경하지 못했습니다.';
       const hint =
         /\(404\)|Not Found|찾을 수 없습니다/i.test(base)
-          ? ' 백엔드(API, 포트 8000)를 한 번 종료한 뒤 다시 실행해 주세요.'
+          ? ` 백엔드(API, 포트 ${devProxyBackendPortLabel()})를 한 번 종료한 뒤 다시 실행해 주세요.`
           : '';
       setError(base + hint);
     } finally {
