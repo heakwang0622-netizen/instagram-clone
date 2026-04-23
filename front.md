@@ -1,4 +1,4 @@
-# 프론트엔드 현황 문서 (Instagram 클론)
+# 프론트엔드 현황 문서 (Kwangsta 클론)
 
 > 최종 업데이트: 2026-04-21
 
@@ -59,7 +59,7 @@ src/components/layout/
 
 - 데스크톱: 좌측 고정 Sidebar (아이콘 + 라벨)
 - 모바일: 하단 BottomNav (홈, 탐색, 작성, DM, 프로필)
-- 공통: Avatar, Skeleton, PostOptionsMenu, InstagramLogo 컴포넌트
+- 공통: Avatar, Skeleton, PostOptionsMenu, KwangstaLogo 컴포넌트
 
 ## 4. 인증 (`src/features/auth/`)
 

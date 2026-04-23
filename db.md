@@ -1,4 +1,4 @@
-# 데이터베이스 현황 문서 (SQLite · Instagram 클론)
+# 데이터베이스 현황 문서 (SQLite · Kwangsta 클론)
 
 > 최종 업데이트: 2026-04-21
 

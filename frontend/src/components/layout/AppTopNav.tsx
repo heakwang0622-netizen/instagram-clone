@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ChangeEvent } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { InstagramLogo } from '../InstagramLogo';
+import { KwangstaLogo } from '../KwangstaLogo';
 import {
   CameraIcon,
   HeartIcon,
@@ -73,7 +73,7 @@ export function AppTopNav() {
     <header className={styles.header}>
       <div className={styles.logo}>
         <Link to="/" aria-label="홈">
-          <InstagramLogo variant="word" />
+          <KwangstaLogo variant="word" />
         </Link>
       </div>
       <nav className={styles.nav} aria-label="빠른 이동">

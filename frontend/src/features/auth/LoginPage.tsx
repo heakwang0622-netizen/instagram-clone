@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { InstagramLogo } from '../../components/InstagramLogo';
+import { KwangstaLogo } from '../../components/KwangstaLogo';
 import { useAuth } from './AuthContext';
 import styles from './LoginPage.module.css';
 
@@ -35,7 +35,7 @@ export function LoginPage() {
       <div className={styles.panel}>
         <div className={styles.card}>
           <div className={styles.logo}>
-            <InstagramLogo />
+            <KwangstaLogo />
           </div>
           {error && <div className={styles.notice}>{error}</div>}
           <form onSubmit={onSubmit}>

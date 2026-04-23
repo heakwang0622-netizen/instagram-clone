@@ -1,10 +1,10 @@
-# Instagram 클론 프로젝트 가이드
+# Kwangsta 클론 프로젝트 가이드
 
 > 최종 업데이트: 2026-04-21
 
 ## 1. 프로젝트 개요
 
-React(프론트) + FastAPI(백엔드) + SQLite 기반 Instagram 클론.  
+React(프론트) + FastAPI(백엔드) + SQLite 기반 Kwangsta 클론.  
 인증, 피드, 게시물 CRUD, 프로필, 팔로우, 댓글, 좋아요, DM, 알림, 관리자 패널을 구현.
 
 | 문서 | 내용 |

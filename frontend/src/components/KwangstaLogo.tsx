@@ -1,8 +1,8 @@
-import styles from './InstagramLogo.module.css';
+import styles from './KwangstaLogo.module.css';
 
 type Props = { variant?: 'word' | 'glyph'; className?: string };
 
-export function InstagramLogo({ variant = 'word', className }: Props) {
+export function KwangstaLogo({ variant = 'word', className }: Props) {
   if (variant === 'glyph') {
     return (
       <svg className={className} width="32" height="32" viewBox="0 0 24 24" aria-label="인스타그램 로고" role="img">
@@ -20,5 +20,5 @@ export function InstagramLogo({ variant = 'word', className }: Props) {
       </svg>
     );
   }
-  return <span className={`${styles.wordmark} ${className ?? ''}`}>Instagram</span>;
+  return <span className={`${styles.wordmark} ${className ?? ''}`}>Kwangsta</span>;
 }

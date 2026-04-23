@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { InstagramLogo } from '../../components/InstagramLogo';
+import { KwangstaLogo } from '../../components/KwangstaLogo';
 import { useAuth } from './AuthContext';
 import styles from './LoginPage.module.css';
 
@@ -33,7 +33,7 @@ export function RegisterPage() {
       <div className={styles.panel}>
         <div className={styles.card}>
           <div className={styles.logo}>
-            <InstagramLogo />
+            <KwangstaLogo />
           </div>
           <p className="ig-muted" style={{ marginBottom: 16 }}>
             친구들의 사진과 동영상을 보려면 가입하세요.

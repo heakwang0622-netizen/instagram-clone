@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { HeartIcon } from '../icons/NavIcons';
-import { InstagramLogo } from '../InstagramLogo';
+import { KwangstaLogo } from '../KwangstaLogo';
 import styles from './MobileHeader.module.css';
 
 export function MobileHeader() {
   return (
     <header className={styles.header}>
       <Link to="/" aria-label="홈">
-        <InstagramLogo variant="glyph" />
+        <KwangstaLogo variant="glyph" />
       </Link>
       <div className={styles.actions}>
         <Link to="/notifications" aria-label="알림">

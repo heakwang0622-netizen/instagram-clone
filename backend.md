@@ -1,4 +1,4 @@
-# 백엔드 현황 문서 (FastAPI · Instagram 클론)
+# 백엔드 현황 문서 (FastAPI · Kwangsta 클론)
 
 > 최종 업데이트: 2026-04-21
 

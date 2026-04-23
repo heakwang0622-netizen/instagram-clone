@@ -1,0 +1,49 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p "${{ secrets.SSH_PORT }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Create deploy.sh on server if missing
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" << 'EOF'
+          set -euo pipefail
+          APP_DIR="/var/www/kwangsta.it.com"
+          mkdir -p "$APP_DIR"
+          if [ ! -f "$APP_DIR/deploy.sh" ]; then
+            cat > "$APP_DIR/deploy.sh" << 'SCRIPT'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          APP_DIR="/var/www/kwangsta.it.com"
+          cd "$APP_DIR"
+          git pull origin main
+          cd frontend
+          npm run build
+          cd ..
+          pip install -r backend/requirements.txt
+          cd backend
+          alembic upgrade head
+          cd ..
+          sudo systemctl restart kwangsta-backend
+          SCRIPT
+            chmod +x "$APP_DIR/deploy.sh"
+          fi
+          EOF
+
+      - name: Run deploy script
+        run: |
+          ssh -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "bash /var/www/kwangsta.it.com/deploy.sh"
