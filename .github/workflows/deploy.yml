@@ -7,6 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -21,9 +22,23 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p "${{ secrets.SSH_PORT }}" -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
 
+      - name: Show loaded SSH key fingerprint
+        run: |
+          ssh-add -l || true
+
       - name: Verify SSH connection
         run: |
-          ssh -o BatchMode=yes -o StrictHostKeyChecking=yes -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "echo ssh-ok"
+          set -euo pipefail
+          for i in 1 2 3; do
+            echo "[verify] attempt ${i}/3"
+            if ssh -o BatchMode=yes -o ConnectTimeout=10 -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "echo ssh-ok"; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "[verify] SSH auth failed after retries. Running verbose diagnostics..."
+          ssh -vvv -o BatchMode=yes -o ConnectTimeout=10 -o StrictHostKeyChecking=yes -o IdentitiesOnly=yes -p "${{ secrets.SSH_PORT }}" "${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}" "echo ssh-ok" || true
+          exit 1
 
       - name: Create deploy.sh on server if missing
         run: |
