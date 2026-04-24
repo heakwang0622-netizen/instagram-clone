@@ -94,7 +94,7 @@ export function HelpSettingsPage() {
       <div className={styles.card}>
         <h2 className={styles.sectionTitle}>앱 사용법</h2>
         <ul className={styles.bulletList}>
-          <li>홈에서 피드를 확인하고 좋아요, 댓글, 저장으로 상호작용할 수 있습니다.</li>
+          <li>홈에서 피드를 확인하고 멍멍, 댓글, 저장으로 상호작용할 수 있습니다.</li>
           <li>검색에서 사용자 이름으로 계정을 찾고 프로필을 방문할 수 있습니다.</li>
           <li>탐색/릴스에서 추천 게시물을 확인하고 새로운 계정을 발견할 수 있습니다.</li>
           <li>메시지에서 대화를 시작하고 상대방과 1:1 DM을 주고받을 수 있습니다.</li>

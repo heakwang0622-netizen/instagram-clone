@@ -68,7 +68,7 @@ export function AdminPosts() {
                 <td>{p.caption || '-'}</td>
                 <td>{new Date(p.created_at).toLocaleString()}</td>
                 <td>
-                  좋아요 {p.likes_count} · 댓글 {p.comments_count}
+                  멍멍 {p.likes_count} · 댓글 {p.comments_count}
                 </td>
                 <td>
                   <button

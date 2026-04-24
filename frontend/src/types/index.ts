@@ -10,7 +10,7 @@ export interface User {
   postsCount: number;
   followersCount: number;
   followingCount: number;
-  /** 다른 사용자 프로필 조회 시, 내가 팔로우 중인지 */
+  /** 다른 사용자 프로필 조회 시, 내가 구독 중인지 */
   isFollowing?: boolean;
   isAdmin?: boolean;
   isPrivate?: boolean;

@@ -51,7 +51,7 @@ export function ExplorePage() {
             <Link key={`${post.id}-${i}`} to={`/p/${post.id}`} className={styles.cell}>
               <img src={post.media[0]?.url} alt="" loading="lazy" />
               <div className={styles.overlay}>
-                <span>좋아요 {post.likesCount}</span>
+                <span>멍멍 {post.likesCount}</span>
                 <span>댓글 {post.commentsCount}</span>
               </div>
             </Link>

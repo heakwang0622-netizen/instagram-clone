@@ -151,7 +151,7 @@ export function ProfilePage() {
               ) : (
                 <>
                   <button type="button" className={`${styles.btn} ${styles.primary}`} onClick={toggleFollow}>
-                    {following ? '팔로잉' : '팔로우'}
+                    {following ? '구독중' : '구독'}
                   </button>
                   <button type="button" className={styles.btn} onClick={openDm}>
                     메시지
@@ -168,7 +168,7 @@ export function ProfilePage() {
               <strong>{profileUser.followersCount.toLocaleString()}</strong> 팔로워
             </Link>
             <Link to={`/${username}/following`}>
-              <strong>{profileUser.followingCount.toLocaleString()}</strong> 팔로잉
+              <strong>{profileUser.followingCount.toLocaleString()}</strong> 구독중
             </Link>
           </div>
           <div className={styles.bio}>

@@ -231,7 +231,7 @@ export function PostDetailPage() {
           ))}
         </div>
         <div className={styles.actions}>
-          <button type="button" onClick={toggleLike} aria-label="좋아요">
+          <button type="button" onClick={toggleLike} aria-label="멍멍">
             <HeartIcon size={26} filled={liked} />
           </button>
           <span aria-hidden>
@@ -241,7 +241,7 @@ export function PostDetailPage() {
             <BookmarkIcon size={26} filled={saved} />
           </button>
         </div>
-        <div className={styles.likes}>좋아요 {likes.toLocaleString()}개</div>
+        <div className={styles.likes}>멍멍 {likes.toLocaleString()}개</div>
         <div className={styles.time}>{new Date(post.createdAt).toLocaleString()}</div>
         <form className={styles.composer} onSubmit={submitComment}>
           <input

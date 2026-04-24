@@ -101,7 +101,7 @@ export function FollowListPage({ variant }: { variant: 'followers' | 'following'
             </Link>
             {variant === 'followers' && (
               <button type="button" className={styles.followBtn} onClick={() => onFollow(u)}>
-                팔로우
+                구독
               </button>
             )}
           </li>

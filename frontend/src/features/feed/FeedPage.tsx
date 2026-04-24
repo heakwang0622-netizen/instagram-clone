@@ -205,7 +205,7 @@ export function FeedPage() {
 
               <p className="ig-muted" style={{ padding: 24 }}>
 
-                표시할 게시물이 없습니다. 팔로우하거나 탐색에서 게시물을 찾아 보세요.
+                표시할 게시물이 없습니다. 구독하거나 탐색에서 게시물을 찾아 보세요.
 
               </p>
 
@@ -278,10 +278,10 @@ export function FeedPage() {
                       </div>
                     </Link>
                     {u.isFollowing ? (
-                      <span className={styles.followingBadge}>팔로우 중</span>
+                      <span className={styles.followingBadge}>구독 중</span>
                     ) : (
                       <button type="button" className={styles.followBtn} onClick={() => onFollowSuggested(u)}>
-                        팔로우
+                        구독
                       </button>
                     )}
                   </div>
@@ -293,7 +293,7 @@ export function FeedPage() {
                 </p>
               ) : (
                 <p className="ig-muted" style={{ fontSize: 13, margin: 0 }}>
-                  로그인하면 팔로우하지 않은 계정을 추천해 드려요.
+                  로그인하면 구독하지 않은 계정을 추천해 드려요.
                 </p>
               )}
 
@@ -311,7 +311,7 @@ export function FeedPage() {
 
             <br />
 
-            © 2026 인스타그램 클론 데모
+            © 2026 멍스타그램 데모
 
           </p>
 

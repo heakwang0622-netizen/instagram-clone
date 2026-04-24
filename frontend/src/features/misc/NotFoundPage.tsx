@@ -13,7 +13,7 @@ export function NotFoundPage() {
         <h1 className={styles.title}>페이지를 찾을 수 없습니다</h1>
         <p className={styles.desc}>링크가 잘못되었거나 페이지가 삭제되었을 수 있습니다. 주소를 다시 확인해 주세요.</p>
         <Link to="/" className={styles.home}>
-          인스타그램 클론 홈으로
+          멍스타그램 홈으로
         </Link>
       </div>
     </div>

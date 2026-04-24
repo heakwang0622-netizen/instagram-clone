@@ -1,5 +1,5 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import { KwangstaLogo } from '../KwangstaLogo';
+﻿import { NavLink, useLocation } from 'react-router-dom';
+import { MeongstagramLogo } from '../MeongstagramLogo';
 import {
   CompassIcon,
   HomeIcon,
@@ -22,7 +22,7 @@ export function Sidebar() {
     <aside className={styles.sidebar} aria-label="주요 메뉴">
       <div className={styles.logoRow}>
         <NavLink to="/" aria-label="홈">
-          <KwangstaLogo />
+          <MeongstagramLogo />
         </NavLink>
       </div>
       <nav className={styles.nav}>

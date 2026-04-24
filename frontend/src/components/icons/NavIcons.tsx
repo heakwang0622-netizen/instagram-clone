@@ -4,20 +4,24 @@ export function HomeIcon({ size = 24, className, active }: IconProps) {
   return active ? (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
       <path
-        d="M22 10.5L12 3L2 10.5V22H9V15.5H15V22H22V10.5Z"
+        d="M4 12L12 5L20 12V21H4V12Z"
         fill="currentColor"
         stroke="currentColor"
         strokeWidth="1.2"
       />
+      <path d="M9 21V15H15V21" stroke="white" strokeWidth="1.4" />
+      <path d="M10.5 11.5H13.5" stroke="white" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   ) : (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
       <path
-        d="M3 10.5L12 4L21 10.5V20C21 20.5523 20.5523 21 20 21H15V14.5H9V21H4C3.44772 21 3 20.5523 3 20V10.5Z"
+        d="M4 12L12 5L20 12V21H4V12Z"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinejoin="round"
       />
+      <path d="M9 21V15H15V21" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M10.5 11.5H13.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
 }
@@ -35,11 +39,11 @@ export function SearchIcon({ size = 24, className, active }: IconProps) {
 export function CompassIcon({ size = 24, className, active }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={active ? 2.5 : 2} fill={active ? 'currentColor' : 'none'} />
-      {!active && (
-        <path d="M14.5 9.5L10 10.5L9 15L13.5 14L14.5 9.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-      )}
-      {active && <path d="M14.5 9.5L10 10.5L9 15L13.5 14L14.5 9.5Z" fill="white" stroke="white" strokeWidth="0.5" />}
+      <circle cx="12" cy="14" r="4.4" stroke="currentColor" strokeWidth={active ? 2.4 : 2} fill={active ? 'currentColor' : 'none'} />
+      <circle cx="8.2" cy="8.2" r="1.7" fill={active ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="11.7" cy="6.9" r="1.5" fill={active ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" />
+      <circle cx="15.2" cy="8.2" r="1.7" fill={active ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" />
+      {active && <circle cx="12" cy="14" r="1.8" fill="white" />}
     </svg>
   );
 }
@@ -47,8 +51,13 @@ export function CompassIcon({ size = 24, className, active }: IconProps) {
 export function ReelsIcon({ size = 24, className, active }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <rect x="3" y="5" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="2" />
-      <path d="M17 8L21 6V18L17 16V8Z" fill={active ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+      <path
+        d="M4 9C4 7.34 5.34 6 7 6H10L11.2 4.4C11.58 3.89 12.34 3.89 12.72 4.4L14 6H17C18.66 6 20 7.34 20 9V15C20 16.66 18.66 18 17 18H7C5.34 18 4 16.66 4 15V9Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill={active ? 'currentColor' : 'none'}
+      />
+      <circle cx="12" cy="12" r="2.5" fill={active ? 'white' : 'none'} stroke={active ? 'white' : 'currentColor'} strokeWidth="1.8" />
     </svg>
   );
 }
@@ -96,8 +105,8 @@ export function HeartIcon({ size = 24, className, filled }: IconProps & { filled
     return (
       <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden>
         <path
-          fill="#ed4956"
-          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+          fill="currentColor"
+          d="M12 21C8 18.7 4 15.2 4 10.8C4 8.4 5.7 6.8 7.9 6.8C9.7 6.8 11 7.9 12 9.2C13 7.9 14.3 6.8 16.1 6.8C18.3 6.8 20 8.4 20 10.8C20 15.2 16 18.7 12 21Z"
         />
       </svg>
     );

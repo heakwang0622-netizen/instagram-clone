@@ -90,7 +90,7 @@ export function ReelsPage() {
         <div className={styles.sideActions}>
           <button type="button" onClick={toggleLike}>
             <HeartIcon size={28} filled={liked} />
-            <span>좋아요 {likes.toLocaleString()}</span>
+            <span>멍멍 {likes.toLocaleString()}</span>
           </button>
           <Link to={`/p/${reel.id}`}>
             <CommentIcon size={28} />

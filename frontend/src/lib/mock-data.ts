@@ -9,7 +9,7 @@ export const currentMockUser: User = {
   username: 'you',
   fullName: '내 계정',
   avatarUrl: av('meavatar'),
-  bio: '인스타그램 클론 데모 ✨',
+  bio: '멍스타그램 데모 ✨',
   postsCount: 12,
   followersCount: 128,
   followingCount: 89,

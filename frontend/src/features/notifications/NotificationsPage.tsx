@@ -10,9 +10,9 @@ import styles from './NotificationsPage.module.css';
 function label(n: AppNotification) {
   switch (n.type) {
     case 'like':
-      return '님이 회원님의 게시물을 좋아합니다.';
+      return '님이 회원님의 게시물에 멍멍을 남겼습니다.';
     case 'follow':
-      return '님이 회원님을 팔로우하기 시작했습니다.';
+      return '님이 회원님을 구독하기 시작했습니다.';
     case 'comment':
       return '님이 댓글을 남겼습니다.';
     case 'mention':

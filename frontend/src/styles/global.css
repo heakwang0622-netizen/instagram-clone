@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --ig-bg: #fafafa;
+  --ig-bg: #f7f7f7;
   --ig-surface: #ffffff;
-  --ig-border: #dbdbdb;
-  --ig-text: #262626;
-  --ig-text-secondary: #8e8e8e;
-  --ig-link: #0095f6;
-  --ig-link-hover: #1877f2;
-  --ig-like: #ed4956;
+  --ig-border: #d6d6d6;
+  --ig-text: #111111;
+  --ig-text-secondary: #5e5e5e;
+  --ig-link: #222222;
+  --ig-link-hover: #000000;
+  --ig-like: #111111;
   --ig-sidebar-width: 244px;
   --ig-feed-max: 470px;
   --ig-bottom-nav: 49px;

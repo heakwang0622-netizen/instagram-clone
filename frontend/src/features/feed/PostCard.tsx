@@ -114,7 +114,7 @@ export function PostCard({ post, onDeleted }: Props) {
       </div>
 
       <div className={styles.actions}>
-        <button type="button" onClick={toggleLike} aria-label={liked ? '좋아요 취소' : '좋아요'}>
+        <button type="button" onClick={toggleLike} aria-label={liked ? '멍멍 취소' : '멍멍'}>
           <HeartIcon size={26} filled={liked} />
         </button>
         <Link to={`/p/${post.id}`} aria-label="댓글 보기">
@@ -122,7 +122,7 @@ export function PostCard({ post, onDeleted }: Props) {
         </Link>
       </div>
 
-      <div className={styles.likes}>좋아요 {likes.toLocaleString()}개</div>
+      <div className={styles.likes}>멍멍 {likes.toLocaleString()}개</div>
       <div className={styles.caption}>
         <Link to={`/${post.user.username}`}>{post.user.username}</Link>{' '}
         {post.caption}

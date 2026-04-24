@@ -37,7 +37,7 @@ export function AdminDashboard() {
       { label: '전체 게시물', value: stats?.posts_total ?? 0 },
       { label: '오늘 게시물', value: stats?.posts_today ?? 0 },
       { label: '전체 댓글', value: stats?.comments_total ?? 0 },
-      { label: '전체 좋아요', value: stats?.likes_total ?? 0 },
+      { label: '전체 멍멍', value: stats?.likes_total ?? 0 },
     ],
     [stats],
   );
