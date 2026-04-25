@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { BottomNav } from './BottomNav';
 import { Sidebar } from './Sidebar';
+import { CloudDecoration } from '../CloudDecoration';
 import { useAuth } from '../../features/auth/AuthContext';
 import styles from './AppShell.module.css';
 
@@ -13,6 +14,7 @@ export function AppShell() {
 
   return (
     <div className={styles.shell}>
+      <CloudDecoration />
       <div className={styles.sidebarSlot}>
         <Sidebar />
       </div>

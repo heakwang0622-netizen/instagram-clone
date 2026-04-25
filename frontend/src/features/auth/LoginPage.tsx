@@ -1,6 +1,7 @@
 ﻿import { useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MeongstagramLogo } from '../../components/MeongstagramLogo';
+import { CloudDecoration } from '../../components/CloudDecoration';
 import { useAuth } from './AuthContext';
 import styles from './LoginPage.module.css';
 
@@ -31,6 +32,7 @@ export function LoginPage() {
 
   return (
     <div className={styles.page}>
+      <CloudDecoration />
       <div className={styles.phones} aria-hidden />
       <div className={styles.panel}>
         <div className={styles.card}>

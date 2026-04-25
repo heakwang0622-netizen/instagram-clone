@@ -1,0 +1,55 @@
+.layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  opacity: 0.18;
+  color: #ffffff;
+}
+
+.c1 {
+  width: 280px;
+  top: 4%;
+  left: -40px;
+  animation: drift 28s ease-in-out infinite;
+}
+
+.c2 {
+  width: 200px;
+  top: 12%;
+  right: 5%;
+  animation: drift 34s ease-in-out infinite reverse;
+}
+
+.c3 {
+  width: 340px;
+  top: 38%;
+  left: 10%;
+  animation: drift 40s ease-in-out infinite;
+}
+
+.c4 {
+  width: 220px;
+  bottom: 18%;
+  right: 8%;
+  animation: drift 32s ease-in-out infinite reverse;
+}
+
+.c5 {
+  width: 180px;
+  bottom: 6%;
+  left: 30%;
+  animation: drift 36s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%   { transform: translateX(0px) translateY(0px); }
+  33%  { transform: translateX(18px) translateY(-10px); }
+  66%  { transform: translateX(-12px) translateY(8px); }
+  100% { transform: translateX(0px) translateY(0px); }
+}

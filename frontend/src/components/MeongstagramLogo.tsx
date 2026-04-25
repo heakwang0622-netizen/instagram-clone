@@ -1,9 +1,11 @@
+import styles from './MeongstagramLogo.module.css';
+
 type Props = { variant?: 'word' | 'glyph'; className?: string };
 
 export function MeongstagramLogo({ variant = 'word', className }: Props) {
-  const size = variant === 'glyph' ? 32 : 36;
-  return (
-    <svg className={className} width={size} height={size} viewBox="0 0 24 24" aria-label="멍스타그램 로고" role="img">
+  const size = 32;
+  const icon = (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
       <circle cx="7" cy="7" r="2.1" fill="currentColor" />
       <circle cx="17" cy="7" r="2.1" fill="currentColor" />
       <circle cx="5.6" cy="12.2" r="1.7" fill="currentColor" />
@@ -13,5 +15,20 @@ export function MeongstagramLogo({ variant = 'word', className }: Props) {
         fill="currentColor"
       />
     </svg>
+  );
+
+  if (variant === 'glyph') {
+    return (
+      <span className={className} role="img" aria-label="멍스타그램 로고">
+        {icon}
+      </span>
+    );
+  }
+
+  return (
+    <span className={`${styles.wordmark} ${className ?? ''}`} role="img" aria-label="멍스타그램 로고">
+      {icon}
+      <span className={styles.text}>멍스타그램</span>
+    </span>
   );
 }
