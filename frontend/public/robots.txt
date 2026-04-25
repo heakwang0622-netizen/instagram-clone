@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /explore
+Allow: /p/
+
+Disallow: /admin
+Disallow: /api
+Disallow: /settings
+Disallow: /direct
+
+Sitemap: https://kwangsta.it.com/sitemap.xml
