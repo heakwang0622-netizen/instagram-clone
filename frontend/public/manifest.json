@@ -1,0 +1,23 @@
+{
+  "name": "멍스타그램",
+  "short_name": "멍스타그램",
+  "description": "강아지 사진과 애견카페 후기 공유",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0284c7",
+  "background_color": "#c4e2f6",
+  "icons": [
+    {
+      "src": "/dog.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/dog.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

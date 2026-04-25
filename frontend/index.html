@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/dog.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#0284c7" />
+    <link rel="manifest" href="/manifest.json" />
     <title>Dogstagram</title>
     <meta name="description" content="강아지 사진과 애견카페 후기를 공유하는 멍스타그램" />
     <meta name="keywords" content="강아지, 애견카페, 멍카페, 애견동반맛집, 강아지사진" />
@@ -19,5 +20,12 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
   </body>
 </html>
