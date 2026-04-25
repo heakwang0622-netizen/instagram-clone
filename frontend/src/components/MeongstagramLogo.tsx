@@ -19,16 +19,16 @@ export function MeongstagramLogo({ variant = 'word', className }: Props) {
 
   if (variant === 'glyph') {
     return (
-      <span className={className} role="img" aria-label="멍스타그램 로고">
+      <span className={className} role="img" aria-label="Dogstagram logo">
         {icon}
       </span>
     );
   }
 
   return (
-    <span className={`${styles.wordmark} ${className ?? ''}`} role="img" aria-label="멍스타그램 로고">
+    <span className={`${styles.wordmark} ${className ?? ''}`} role="img" aria-label="Dogstagram logo">
       {icon}
-      <span className={styles.text}>멍스타그램</span>
+      <span className={styles.text}>Dogstagram</span>
     </span>
   );
 }

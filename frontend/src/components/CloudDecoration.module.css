@@ -8,43 +8,92 @@
 
 .cloud {
   position: absolute;
-  opacity: 0.18;
+  opacity: 0.65;
   color: #ffffff;
 }
 
 .c1 {
-  width: 280px;
-  top: 4%;
-  left: -40px;
+  width: 300px;
+  top: 3%;
+  left: -30px;
   animation: drift 28s ease-in-out infinite;
 }
 
 .c2 {
-  width: 200px;
-  top: 12%;
-  right: 5%;
+  width: 220px;
+  top: 10%;
+  right: 4%;
   animation: drift 34s ease-in-out infinite reverse;
 }
 
 .c3 {
-  width: 340px;
-  top: 38%;
-  left: 10%;
+  width: 360px;
+  top: 36%;
+  left: 8%;
   animation: drift 40s ease-in-out infinite;
 }
 
 .c4 {
-  width: 220px;
-  bottom: 18%;
-  right: 8%;
+  width: 240px;
+  bottom: 20%;
+  right: 6%;
   animation: drift 32s ease-in-out infinite reverse;
 }
 
 .c5 {
-  width: 180px;
-  bottom: 6%;
-  left: 30%;
+  width: 200px;
+  bottom: 5%;
+  left: 28%;
   animation: drift 36s ease-in-out infinite;
+}
+
+.c6 {
+  width: 160px;
+  top: 22%;
+  left: 45%;
+  animation: drift 30s ease-in-out infinite reverse;
+}
+
+.c7 {
+  width: 280px;
+  top: 55%;
+  right: 15%;
+  animation: drift 38s ease-in-out infinite;
+}
+
+.c8 {
+  width: 180px;
+  top: 70%;
+  left: 3%;
+  animation: drift 26s ease-in-out infinite reverse;
+}
+
+.c9 {
+  width: 250px;
+  top: 15%;
+  left: 22%;
+  animation: drift 44s ease-in-out infinite;
+}
+
+.c10 {
+  width: 190px;
+  bottom: 35%;
+  left: 60%;
+  animation: drift 31s ease-in-out infinite reverse;
+}
+
+.c11 {
+  width: 310px;
+  top: 80%;
+  right: 30%;
+  animation: drift 42s ease-in-out infinite;
+}
+
+.c12 {
+  width: 170px;
+  top: 45%;
+  right: 38%;
+  animation: drift 29s ease-in-out infinite reverse;
 }
 
 @keyframes drift {

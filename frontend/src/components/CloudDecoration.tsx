@@ -19,6 +19,13 @@ export function CloudDecoration() {
       <Cloud className={`${styles.cloud} ${styles.c3}`} />
       <Cloud className={`${styles.cloud} ${styles.c4}`} />
       <Cloud className={`${styles.cloud} ${styles.c5}`} />
+      <Cloud className={`${styles.cloud} ${styles.c6}`} />
+      <Cloud className={`${styles.cloud} ${styles.c7}`} />
+      <Cloud className={`${styles.cloud} ${styles.c8}`} />
+      <Cloud className={`${styles.cloud} ${styles.c9}`} />
+      <Cloud className={`${styles.cloud} ${styles.c10}`} />
+      <Cloud className={`${styles.cloud} ${styles.c11}`} />
+      <Cloud className={`${styles.cloud} ${styles.c12}`} />
     </div>
   );
 }

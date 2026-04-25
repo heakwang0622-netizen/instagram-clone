@@ -6,6 +6,8 @@
   height: 100vh;
   border-right: 1px solid var(--ig-border);
   background: var(--ig-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 8px 12px 20px;
   display: flex;
   flex-direction: column;
